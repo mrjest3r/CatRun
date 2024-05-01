@@ -205,7 +205,7 @@ def end_game():
     score_rect = score_text.get_rect(center=(640, 340))
     screen.blit(game_over_text, game_over_rect)
     screen.blit(score_text, score_rect)
-    game_speed = 5
+    game_speed = 6
     cloud_group.empty()
     obstacle_group.empty()
 
@@ -230,7 +230,7 @@ while True:
                 cat.jump()
                 if game_over:
                     game_over = False
-                    game_speed = 5
+                    game_speed = 6
                     player_score = 0
 
     screen.fill("white")
@@ -243,7 +243,7 @@ while True:
         end_game()
 
     if not game_over:
-        game_speed += 0.0025
+        game_speed += 0.0020
         if round(player_score, 1) % 100 == 0 and int(player_score) > 0:
             points_sfx.play()
 
@@ -253,7 +253,7 @@ while True:
         if obstacle_spawn:
             obstacle_random = random.randint(1, 50)
             if obstacle_random in range(1, 7):
-                new_obstacle = Cactus(1100, 340)
+                new_obstacle = Cactus(1260, 340)
                 obstacle_group.add(new_obstacle)
                 obstacle_timer = pygame.time.get_ticks()
                 obstacle_spawn = False
