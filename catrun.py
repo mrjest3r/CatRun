@@ -5,7 +5,7 @@ import random
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
-pygame.display.set_caption("Dino Game")
+pygame.display.set_caption("Cat Run")
 
 game_font = pygame.font.Font("assets/PressStart2P-Regular.ttf", 24)
 
@@ -25,7 +25,7 @@ class Cloud(pygame.sprite.Sprite):
         self.rect.x -= 1
 
 
-class Dino(pygame.sprite.Sprite):
+class Catosaur(pygame.sprite.Sprite):
     def __init__(self, x_pos, y_pos):
         super().__init__()
         self.running_sprites = []
@@ -49,21 +49,21 @@ class Dino(pygame.sprite.Sprite):
             pygame.image.load("assets/frame07.png"), (80, 100)))
 
         self.ducking_sprites.append(pygame.transform.scale(
-            pygame.image.load(f"assets/duckframe00.png"), (110, 60)))
+            pygame.image.load(f"assets/duckframe00.png"), (100, 60)))
         self.ducking_sprites.append(pygame.transform.scale(
-            pygame.image.load(f"assets/duckframe01.png"), (110, 60)))
+            pygame.image.load(f"assets/duckframe01.png"), (100, 60)))
         self.ducking_sprites.append(pygame.transform.scale(
-            pygame.image.load(f"assets/duckframe02.png"), (110, 60)))
+            pygame.image.load(f"assets/duckframe02.png"), (100, 60)))
         self.ducking_sprites.append(pygame.transform.scale(
-            pygame.image.load(f"assets/duckframe03.png"), (110, 60)))
+            pygame.image.load(f"assets/duckframe03.png"), (100, 60)))
         self.ducking_sprites.append(pygame.transform.scale(
-            pygame.image.load(f"assets/duckframe04.png"), (110, 60)))
+            pygame.image.load(f"assets/duckframe04.png"), (10, 60)))
         self.ducking_sprites.append(pygame.transform.scale(
-            pygame.image.load(f"assets/duckframe05.png"), (110, 60)))
+            pygame.image.load(f"assets/duckframe05.png"), (100, 60)))
         self.ducking_sprites.append(pygame.transform.scale(
-            pygame.image.load(f"assets/duckframe06.png"), (110, 60)))
+            pygame.image.load(f"assets/duckframe06.png"), (100, 60)))
         self.ducking_sprites.append(pygame.transform.scale(
-            pygame.image.load(f"assets/duckframe07.png"), (110, 60)))
+            pygame.image.load(f"assets/duckframe07.png"), (100, 60)))
 
         self.x_pos = x_pos
         self.y_pos = y_pos
@@ -181,8 +181,8 @@ dino_group = pygame.sprite.GroupSingle()
 ptero_group = pygame.sprite.Group()
 
 # Objects
-dinosaur = Dino(50, 360)
-dino_group.add(dinosaur)
+cat = Catosaur(50, 360)
+catosaur_group.add(cat)
 
 # Sounds
 death_sfx = pygame.mixer.Sound("assets/sfx/lose.mp3")
@@ -213,10 +213,10 @@ def end_game():
 while True:
     keys = pygame.key.get_pressed()
     if keys[pygame.K_DOWN]:
-        dinosaur.duck()
+        cat.duck()
     else:
-        if dinosaur.ducking:
-            dinosaur.unduck()
+        if cat.ducking:
+            cat.unduck()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -227,7 +227,7 @@ while True:
             cloud_group.add(current_cloud)
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE or event.key == pygame.K_UP:
-                dinosaur.jump()
+                cat.jump()
                 if game_over:
                     game_over = False
                     game_speed = 5
@@ -253,7 +253,7 @@ while True:
         if obstacle_spawn:
             obstacle_random = random.randint(1, 50)
             if obstacle_random in range(1, 7):
-                new_obstacle = Cactus(1280, 340)
+                new_obstacle = Cactus(1100, 340)
                 obstacle_group.add(new_obstacle)
                 obstacle_timer = pygame.time.get_ticks()
                 obstacle_spawn = False
@@ -274,8 +274,8 @@ while True:
         ptero_group.update()
         ptero_group.draw(screen)
 
-        dino_group.update()
-        dino_group.draw(screen)
+        catosaur_group.update()
+        catosaur_group.draw(screen)
 
         obstacle_group.update()
         obstacle_group.draw(screen)
