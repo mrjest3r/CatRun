@@ -177,7 +177,7 @@ cloud = pygame.transform.scale(cloud, (200, 80))
 
 cloud_group = pygame.sprite.Group()
 obstacle_group = pygame.sprite.Group()
-dino_group = pygame.sprite.GroupSingle()
+catosaur_group = pygame.sprite.GroupSingle()
 ptero_group = pygame.sprite.Group()
 
 # Objects
@@ -236,7 +236,7 @@ while True:
     screen.fill("white")
 
     # Collisions
-    if pygame.sprite.spritecollide(dino_group.sprite, obstacle_group, False):
+    if pygame.sprite.spritecollide(catosaur_group.sprite, obstacle_group, False):
         game_over = True
         death_sfx.play()
     if game_over:
