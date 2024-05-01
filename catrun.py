@@ -57,7 +57,7 @@ class Catosaur(pygame.sprite.Sprite):
         self.ducking_sprites.append(pygame.transform.scale(
             pygame.image.load(f"assets/duckframe03.png"), (100, 60)))
         self.ducking_sprites.append(pygame.transform.scale(
-            pygame.image.load(f"assets/duckframe04.png"), (10, 60)))
+            pygame.image.load(f"assets/duckframe04.png"), (100, 60)))
         self.ducking_sprites.append(pygame.transform.scale(
             pygame.image.load(f"assets/duckframe05.png"), (100, 60)))
         self.ducking_sprites.append(pygame.transform.scale(
