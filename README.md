@@ -15,6 +15,7 @@ Welcome to Cat Run, the purrfectly fun game where you guide a cute cat through a
 - Simple Controls: Easy one-tap controls make it accessible for players of all ages.
 
 ## How to Run Locally
+
 -download the repository and extract the folder 
 -Using pip installer, install pygame and run the catrun.py
 -enjoy the game!
